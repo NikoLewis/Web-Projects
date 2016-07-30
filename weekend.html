@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Week 2, Homework</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="weekend.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="weekend.css">
+
+    <script>
+
+function render(movieArray, displayWide) {
+    // This function will get called automagically.
+    // Replace this return call with the string of HTML that you
+    // generate: 
+    var htmlStr = ''; // <- this populates this string with all our movie info from the renderMovie function
+    
+
+    for(var i = 0; i < movieArray.length; i++) {// <- loops through as long as it's less than the total # of movies in our movie Array
+        if(displayWide){
+            htmlStr += '<div class= "big">' + renderMovie(movieArray[i]) + '</div>';   
+        }
+        else{
+            htmlStr += '<div class= "small"><ul>' + renderMovieCompact(movieArray[i]) + '</ul></div>';
+        }
+  }
+        return htmlStr;
+
+    } 
+function renderMovie(movie) {
+    var castStr = '';
+    
+
+    for(i = 0; i< movie.cast.length;i++){
+
+        castStr += '<li>' + movie.cast[i] +'</li>';
+    }
+
+  
+
+return '<div class="movie animation">' +
+  '<h1 class="name">' + movie.name + '</h1>' +
+  '<p>Release date: <span class="year">' + movie.year + '</span>, Genre: <span class="genre">' + movie.genre + '</span>.</p>'
++ '<div> Starring:<ul>' + castStr + '</ul></div>' +
+  '<p class="description">' + movie.description + '</p>' + '</div>';
+
+ 
+
+
+    }
+
+function renderMovieCompact(movie){
+    var compactCastStr = '';
+  for(i = 0; i< movie.cast.length;i++){
+        if( i === movie.cast.length-1){
+         compactCastStr += movie.cast[i] ;   
+        }
+        else{
+        compactCastStr += movie.cast[i] +', ';
+    }
+    }
+
+    return '<li class="movie animation"><span class="' + movie.name+' ">Minions</span><span class="year">(' + movie.year +'</span>,<span class="genre"> ' + movie.genre + '</span>)'+
+  ' starring: ' + compactCastStr + '</li>';
+
+}
+    
+
+    // body...
+
+// Add additional function definitions here.
+    </script>
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>
